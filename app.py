@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from geopy.geocoders import Nominatim
 import re
 import webbrowser
-
+import os
 
 app = Flask(__name__)
 
@@ -249,4 +249,5 @@ def sair_programa():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    # Rodando na porta definida pelo Heroku
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
